@@ -72,3 +72,29 @@ TEST(TrojanMapStudentTest, TEST2) {
   std::pair<double, double> gt5(-1, -1);
   EXPECT_EQ(position, gt5);
 }
+
+
+TEST(TrojanMapTest, Test3) {
+  TrojanMap m;
+  EXPECT_EQ(m.CalculateEditDistance("horse", "ros"), 3);
+  EXPECT_EQ(m.CalculateEditDistance("cat", "cut"), 1);
+  EXPECT_EQ(m.CalculateEditDistance("sunday", "saturday"), 3);
+}
+
+
+TEST(TrojanMapTest, Test4) {
+  TrojanMap m;
+  
+  std::string r1 = "Starbucks";
+  EXPECT_EQ(m.FindClosestName("Storbucks"), r1);
+  EXPECT_EQ(m.FindClosestName("Stooooorbucks"), r1);
+  EXPECT_EQ(m.FindClosestName(" Storrrrrrrbucks"), r1);
+
+  std::string r3 = "CAVA";
+  EXPECT_EQ(m.FindClosestName("CAVAS"), r3);
+
+  std::string r2 = "Chevron";
+  EXPECT_EQ(m.FindClosestName("Chevrrron"), r2);
+
+
+}

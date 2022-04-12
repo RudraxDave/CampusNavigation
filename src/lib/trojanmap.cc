@@ -64,11 +64,14 @@ std::string TrojanMap::GetID(const std::string& name) {
  * @return {std::pair<double,double>}  : (lat, lon)
  */
 std::pair<double, double> TrojanMap::GetPosition(std::string name) {
-  std::pair<double, double> results(-1, -1); // location doesn't exisit
-  for (auto id : data) { //for each original name in database
-    if (name == id.second.name) { //check if the input name is in the database
-      results.first = GetLat(id.first);//Insert Latitude as first param
-      results.second = GetLon(id.first);//Insert Longitude as second param
+  std::pair<double, double> results(-1, -1); 
+  for (auto id : data) { 
+    if(name == "") { 
+    return results;
+  }
+    if (name == id.second.name) { 
+      results.first = GetLat(id.first);
+      results.second = GetLon(id.first);
       break;
     }
   }
@@ -117,8 +120,7 @@ std::string TrojanMap::FindClosestName(std::string name) {
     }
     
   }
-  // return min_map.first;
-  // return memo.begin()->first;
+
   std::pair<std::string, int> min_name ("Target",10000);
   for (auto element:memo)
   {
@@ -129,10 +131,8 @@ std::string TrojanMap::FindClosestName(std::string name) {
     }
   }
   return min_name.first;
-  // std::string tmp = "";
-  // return tmp;
-}
 
+}
 
 
 /**
