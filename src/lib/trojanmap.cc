@@ -1,5 +1,7 @@
 #include "trojanmap.h"
-
+#include<string>
+#include <utility>
+#include <ctype.h>
 //-----------------------------------------------------
 // TODO: Student should implement the following:
 //-----------------------------------------------------
@@ -10,7 +12,7 @@
  * @return {double}         : latitude
  */
 double TrojanMap::GetLat(const std::string& id) {
-    return 0;
+    return data[id].lat;
 }
 
 /**
@@ -20,7 +22,7 @@ double TrojanMap::GetLat(const std::string& id) {
  * @return {double}         : longitude
  */
 double TrojanMap::GetLon(const std::string& id) { 
-    return 0;
+    return data[id].lon;
 }
 
 /**
@@ -62,17 +64,38 @@ std::string TrojanMap::GetID(const std::string& name) {
  * @return {std::pair<double,double>}  : (lat, lon)
  */
 std::pair<double, double> TrojanMap::GetPosition(std::string name) {
-  std::pair<double, double> results(-1, -1);
+  std::pair<double, double> results(-1, -1); // location doesn't exisit
+  for (auto id : data) { //for each original name in database
+    if (name == id.second.name) { //check if the input name is in the database
+      results.first = GetLat(id.first);//Insert Latitude as first param
+      results.second = GetLon(id.first);//Insert Longitude as second param
+      break;
+    }
+  }
   return results;
 }
 
-
-/**
- * CalculateEditDistance: Calculate edit distance between two location names
- * 
- */
 int TrojanMap::CalculateEditDistance(std::string a, std::string b){
-    return 0;
+  int m = a.size();
+  int n = b.size();
+  int D[2][m+1];
+  for(int i=0;i<=m;i++)
+    D[0][i] = i;
+  for(int i=1;i<=n;i++)
+  {
+    for(int j=0;j<=m;j++)
+    {
+      if(j==0)
+      D[i%2][j] = i; 
+    else if(a[j-1] == b[i-1]){
+      D[i%2][j] = D[(i-1)%2][j-1];
+    }
+    else{
+      D[i%2][j]=1 + std::min(D[(i-1)%2][j],std::min(D[i%2][j-1],D[(i-1)%2][j-1]));
+      }
+    }
+  }
+  return D[n%2][m];
 }
 
 /**
@@ -82,9 +105,34 @@ int TrojanMap::CalculateEditDistance(std::string a, std::string b){
  * @return {std::string} tmp           : similar name
  */
 std::string TrojanMap::FindClosestName(std::string name) {
-  std::string tmp = "";
-  return tmp;
+  std::map<std::string, int> memo;
+  for (auto str:data)
+  {
+    
+    std::string data_name = str.second.name;
+    if (memo.count(data_name) < 1)
+    {
+      memo[data_name] = TrojanMap::CalculateEditDistance(name,data_name);
+      // std::cout<<memo[data_name]<<std::endl;
+    }
+    
+  }
+  // return min_map.first;
+  // return memo.begin()->first;
+  std::pair<std::string, int> min_name ("Target",10000);
+  for (auto element:memo)
+  {
+    if (element.second < min_name.second)
+    {
+      min_name.first = element.first;
+      min_name.second = element.second;
+    }
+  }
+  return min_name.first;
+  // std::string tmp = "";
+  // return tmp;
 }
+
 
 
 /**
@@ -96,6 +144,15 @@ std::string TrojanMap::FindClosestName(std::string name) {
  */
 std::vector<std::string> TrojanMap::Autocomplete(std::string name){
   std::vector<std::string> results;
+  std::string ids;
+  std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+  for (auto id : data) {
+  ids = id.second.name;
+  std::transform(ids.begin(), ids.end(), ids.begin(), ::tolower);
+    if (name == ids.substr(0, name.size())) {
+      results.push_back(id.second.name);
+    }
+  }
   return results;
 }
 
