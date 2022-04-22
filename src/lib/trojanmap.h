@@ -96,6 +96,8 @@ class TrojanMap {
   std::vector<std::string> DeliveringTrojan(std::vector<std::string> &location_names,
                                             std::vector<std::vector<std::string>> &dependencies);
 
+  void TrojanMap::DFSHelper(std::string &root, std::vector<std::string> &result, std::vector<std::vector<std::string>> &dependencies);
+
   // Given a vector of location ids, it should reorder them such that the path
   // that covers all these points has the minimum length.
   // The return value is a pair where the first member is the total_path,
@@ -113,6 +115,8 @@ class TrojanMap {
 
   // Check whether the id is in square or not
   bool inSquare(std::string id, std::vector<double> &square);
+
+  bool TrojanMap::hasCycle(std::string current_id,std::unordered_map<std::string, bool> &visited, std::string parent_id);
 
   // Get the subgraph based on the input
   std::vector<std::string> GetSubgraph(std::vector<double> &square);

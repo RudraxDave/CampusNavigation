@@ -363,19 +363,41 @@ std::vector<std::vector<std::string>> TrojanMap::ReadDependenciesFromCSVFile(std
  */
 std::vector<std::string> TrojanMap::DeliveringTrojan(std::vector<std::string> &locations,
                                                      std::vector<std::vector<std::string>> &dependencies){
-  std::vector<std::string> result;
-  return result;                                                     
+  std::vector<std::string> result;      
+  for (auto location: locations)
+  {
+    DFSHelper(location, result, dependencies);
+  } 
+  std::reverse(result.begin(),result.end());
+  return result;                                             
 }
 
-/**
- * inSquare: Give a id retunr whether it is in square or not.
- *
- * @param  {std::string} id            : location id
- * @param  {std::vector<double>} square: four vertexes of the square area
- * @return {bool}                      : in square or not
- */
+void TrojanMap::DFSHelper(std::string &root, std::vector<std::string> &result, std::vector<std::vector<std::string>> &dependencies)
+{
+  if (std::count(result.begin(), result.end(), root) == 0)
+    {
+      for (int i = 0; i < dependencies.size(); i++)
+      {
+        if (dependencies[i][0] == root)
+        {
+          if (std::count(result.begin(), result.end(), dependencies[i][1]) == 0)
+          {
+            result.push_back(dependencies[i][1]);
+            DFSHelper(dependencies[i][1], result, dependencies);
+          }
+        }
+      }
+      result.push_back(root);
+    }
+}
+
 bool TrojanMap::inSquare(std::string id, std::vector<double> &square) {
-  return false;
+  std::vector<std::string> square_id = GetSubgraph(square);
+  if(std::find(square_id.begin(), square_id.end(), id) != square_id.end()) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -387,6 +409,18 @@ bool TrojanMap::inSquare(std::string id, std::vector<double> &square) {
 std::vector<std::string> TrojanMap::GetSubgraph(std::vector<double> &square) {
   // include all the nodes in subgraph
   std::vector<std::string> subgraph;
+  double ver1 = square[0];
+  double ver2 = square[1];
+  double ver3 = square[2];
+  double ver4 = square[3];
+
+  for(auto j = data.begin(); j != data.end(); j++){
+    if((data[j->first].lon)>ver1 && (data[j->first].lon)<ver2){
+      if((data[j->first].lat)<ver3 && (data[j->first].lat)>ver4){
+        subgraph.push_back(data[j->first].id);
+      }
+    }
+  }
   return subgraph;
 }
 
@@ -398,10 +432,39 @@ std::vector<std::string> TrojanMap::GetSubgraph(std::vector<double> &square) {
  * @param {std::vector<double>} square: four vertexes of the square area
  * @return {bool}: whether there is a cycle or not
  */
-bool TrojanMap::CycleDetection(std::vector<std::string> &subgraph, std::vector<double> &square) {
+
+bool TrojanMap::hasCycle(std::string current_id,std::unordered_map<std::string, bool> &visited, std::string parent_id){
+  visited[current_id] = true;
+  for(auto n:data[current_id].neighbors){
+    if(visited.find(n) != visited.end()){ //to check if the neighbor is in the area
+      if(visited[n] == false){
+        if(hasCycle(n,visited,current_id)){
+          return true;
+        }
+      }else if((n!=parent_id) && (visited[n]== true)){
+          return true;
+      }
+    }
+  }
   return false;
 }
 
+bool TrojanMap::CycleDetection(std::vector<std::string> &subgraph, std::vector<double> &square) {
+  std::unordered_map<std::string, bool> visited;
+
+  for(auto id_i:subgraph){
+    visited[id_i] = false;
+  }
+
+  for(auto id_itr:subgraph){
+    if(visited[id_itr] == false){
+      if (hasCycle(id_itr,visited,"")){
+        return true;
+      }
+    }
+  }
+  return false;
+}
 /**
  * FindNearby: Given a class name C, a location name L and a number r, 
  * find all locations in class C on the map near L with the range of r and return a vector of string ids

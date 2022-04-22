@@ -1,8 +1,10 @@
-Phase 1 submission:
+<b>Phase 1 submission:</b>
 
     High-level overview of your design (Use diagrams and pictures for your data structures).
 
-<pr> We can See that we have implemented Functions of :
+<pr>
+<b>Phase 1</b>
+ We can See that we have implemented Functions of :
       1. Implementation of Auto complete: 5 points. (Phase 1)
       2. Implementation of GetPosition: 5 points. (Phase 1)
       3. Implementation of EditDistance: 10 points. (Phase 1)
@@ -45,4 +47,31 @@ Phase 1 submission:
     Detailed description of each function and its time complexity.
     Time spent for each function.
     Discussion, conclusion, and lessons learned.
+</pr>
+
+<b>Phase 2 submission:</b>
+
+    High-level overview of your design .
+<pr>
+<b>Phase 2</b>
+
+std::vector<std::string> TrojanMap::DeliveringTrojan(std::vector<std::string> &locations,
+                                                     std::vector<std::vector<std::string>> &dependencies){
+
+
+bool TrojanMap::inSquare(std::string id, std::vector<double> &square)
+
+std::vector<std::string> TrojanMap::GetSubgraph(std::vector<double> &square)
+
+bool TrojanMap::hasCycle(std::string current_id,std::unordered_map<std::string, bool> &visited, std::string parent_id)
+
+bool TrojanMap::CycleDetection(std::vector<std::string> &subgraph, std::vector<double> &square)
+
+void TrojanMap::CreateGraphFromCSVFile()
+
+std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
+
+std::vector<std::string> TrojanMap::CalculateShortestPath_Bellman_Ford
+
+
 </pr>
