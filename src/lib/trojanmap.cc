@@ -199,10 +199,60 @@ double TrojanMap::CalculatePathLength(const std::vector<std::string> &path) {
  */
 std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
     std::string location1_name, std::string location2_name) {
-  std::vector<std::string> path;
+    std::vector<std::string> path;
+    std::string start = GetID(location1_name);
+    std::string end = GetID(location2_name);
+    std::cout << start + "   " + end << std::endl; 
+    std::priority_queue <std::pair<double,std::string>,std::vector<std::pair<double,std::string>>,std::greater<std::pair<double,std::string>>> minim_heap;                 //Priority queue to implement Heap with <distance,node ID>
+    std::unordered_map <std::string,double> dist;                 //Unordered Map to store the distance from root to current node
+    for(auto nodes:data){
+      dist[nodes.second.id] = DBL_MAX;
+    }
+    std::unordered_map <std::string,std::string> predecessor;   //Unordered map to store the predecessor of the node
+    std::unordered_map <std::string,bool> visited;          //Unord Map to keep track if node is visited
+    for(auto nodes:data){
+      visited[nodes.second.id] = false;
+    }
+    dist[start] = 0;
+    minim_heap.push(std::make_pair(dist[start],start));
+    while(!minim_heap.empty()){
+      std::string current = minim_heap.top().second;
+      minim_heap.pop();
+      if(current!=end){
+        //std::cout<<"HERE!!!";
+        if(CalculateDistance(current,start)>dist[current]){
+          continue;
+        }
+        else if(visited[current]){
+          continue;
+        }
+        else{
+          visited[current] = true;
+          for(auto neighbour : data[current].neighbors){
+            double new_dist = dist[current] + CalculateDistance(current,neighbour);
+             if(dist[neighbour]>new_dist){
+               dist[neighbour] = new_dist;
+               predecessor[neighbour] = current;   
+               minim_heap.push(std::make_pair(dist[neighbour],neighbour));          
+          }
+          }
+        }
+      }
+      else{
+      visited[end] = true;
+      break;
+      }
+    }
+    if(!visited[end])
+     return path;
+    for(auto node = end; node!= start; node = predecessor[node])
+    {
+      path.push_back(node);
+    }
+    path.push_back(start);
+    std::reverse(path.begin(),path.end());
   return path;
 }
-
 /**
  * CalculateShortestPath_Bellman_Ford: Given 2 locations, return the shortest path which is a
  * list of id. Hint: Do the early termination when there is no change on distance.
@@ -213,8 +263,45 @@ std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
  */
 std::vector<std::string> TrojanMap::CalculateShortestPath_Bellman_Ford(
     std::string location1_name, std::string location2_name){
-  std::vector<std::string> path;
-  return path;
+    std::vector<std::string> path;
+    std::string start = GetID(location1_name);
+    std::string end = GetID(location2_name);
+    std::unordered_map <std::string,double> dist;       //Unordered Map to store the distance from root to current node
+    int f = 0;
+    for(auto nodes:data){
+      dist[nodes.second.id] = DBL_MAX;
+    }
+    std::unordered_map <std::string,std::string> predecessor; //Unordered map to store the predecessor of the node
+    dist[start] = 0;
+    //std::cout << data.size();
+    if(start!=end){
+      for (int i = 0; i < data.size()-1; i++){
+        for (auto pair: data){
+            std::string current = pair.second.id;
+            for(auto neighbour : pair.second.neighbors){
+                  double new_dist = dist[current] + CalculateDistance(current,neighbour);
+                  if(dist[neighbour]>new_dist){
+                    dist[neighbour] = new_dist;
+                    predecessor[neighbour] = current;                    
+                    f++;
+                  }
+            }
+        }
+        if(f==0){
+              break;
+            }
+            f = 0;
+      }
+    }
+    if(dist[end]==DBL_MAX)
+      return path;
+    for(auto node = end; node!= start; node = predecessor[node])
+    {
+      path.push_back(node);
+    }
+    path.push_back(start);
+    std::reverse(path.begin(),path.end());
+    return path;
 }
 
 /**
