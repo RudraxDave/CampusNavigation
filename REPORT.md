@@ -1,3 +1,5 @@
+<b>HI, this is Rudrax Dave : Doing the Project Alone: If you find any other with the same situation let me know and will contact him/her to be added to the project group.</b>
+
 <b>Phase 1 submission:</b>
 
     High-level overview of your design (Use diagrams and pictures for your data structures).
@@ -50,6 +52,7 @@
 </pr>
 
 <b>Phase 2 submission:</b>
+
 
     High-level overview of your design .
 <pr>
