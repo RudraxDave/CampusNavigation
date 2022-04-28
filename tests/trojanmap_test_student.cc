@@ -101,7 +101,7 @@ TEST(TrojanMapTest, Test4) {
 
 // Phase 2
 // Test CalculateShortestPath_Dijkstra function
-TEST(TrojanMapTest, CalculateShortestPath_Dijkstra) {
+TEST(TrojanMapTest, TESTDijkstra) {
   TrojanMap m;
   
   // Test from Ralphs to Chick-fil-A
@@ -133,7 +133,7 @@ TEST(TrojanMapTest, CalculateShortestPath_Dijkstra) {
   EXPECT_EQ(path, gt);
 }
 
-TEST(TrojanMapStudentTest, CalculateShortestPath_Dijkstra2) {
+TEST(TrojanMapStudentTest, TESTDijkstra2) {
   TrojanMap m;
   
   // Test from KFC to Ralphs
@@ -155,8 +155,8 @@ TEST(TrojanMapStudentTest, CalculateShortestPath_Dijkstra2) {
 }
 
 
-// Test CalculateShortestPath_Bellman_Ford function
-TEST(TrojanMapTest, CalculateShortestPath_Bellman_Ford) {
+// // Test CalculateShortestPath_Bellman_Ford function
+TEST(TrojanMapTest, TESTBellman_Ford) {
   TrojanMap m;
   
   // Test from Ralphs to Chick-fil-A
@@ -189,7 +189,7 @@ TEST(TrojanMapTest, CalculateShortestPath_Bellman_Ford) {
 }
 
 // Test CalculateShortestPath_Bellman_Ford function
-TEST(TrojanMapStudentTest, CalculateShortestPath_Bellman_Ford2) {
+TEST(TrojanMapStudentTest, TESTBellman_Ford2) {
   TrojanMap m;
   
   // Test from KFC to Ralphs
@@ -213,7 +213,7 @@ TEST(TrojanMapStudentTest, CalculateShortestPath_Bellman_Ford2) {
 
 
 // Test cycle detection function
-TEST(TrojanMapTest, CycleDetection) {
+TEST(TrojanMapTest, TESTCycle) {
   TrojanMap m;
   
   std::vector<double> square1 = {-118.299, -118.264, 34.032, 34.011};
@@ -231,8 +231,8 @@ TEST(TrojanMapTest, CycleDetection) {
 
 
 
-// Test cycle detection function
-TEST(TrojanMapTest, TopologicalSort) {
+// // Test cycle detection function
+TEST(TrojanMapTest, TESTTopoSort) {
   TrojanMap m;
   
   //Case 1: Using input vector
@@ -243,13 +243,21 @@ TEST(TrojanMapTest, TopologicalSort) {
   EXPECT_EQ(result, gt);
 
   //Case 2: Read input from csv file
-  std::string base_path = "/home/rudrax/TrojanMap/final-project-RudraxDave";
-  std::string dependencies_filename = base_path + "/input/topologicalsort_dependencies_2.csv";
-  std::string locations_filename = base_path + "/input/topologicalsort_locations_2.csv";
-  location_names = m.ReadLocationsFromCSVFile(locations_filename);
-  dependencies = m.ReadDependenciesFromCSVFile(dependencies_filename);
-  result = m.DeliveringTrojan(location_names, dependencies);
-  gt ={"Target","Ralphs","Chick-fil-A","Chipotle","KFC"};
-  EXPECT_EQ(result, gt);
-//
+  // std::string base_path = "/home/rudrax/TrojanMap/final-project-RudraxDave";
+  // std::string dependencies_filename = base_path + "/input/topologicalsort_dependencies.csv";
+  // std::string locations_filename = base_path + "/input/topologicalsort_locations.csv";
+  // location_names = m.ReadLocationsFromCSVFile(locations_filename);
+  // dependencies = m.ReadDependenciesFromCSVFile(dependencies_filename);
+  // result = m.DeliveringTrojan(location_names, dependencies);
+  // gt ={"Target","Ralphs","Chick-fil-A","Chipotle","KFC"};
+  // EXPECT_EQ(result, gt);
 }
+
+// Ralphs
+// KFC
+// Chick-fil-A
+
+// Source, Destination
+// Ralphs,Chick-fil-A
+// Ralphs,KFC
+// Chick-fil-A,KFC

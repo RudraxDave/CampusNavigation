@@ -11,7 +11,7 @@
       2. Implementation of GetPosition: 5 points. (Phase 1)
       3. Implementation of EditDistance: 10 points. (Phase 1)
 
-      *-> Auto complete:  * Autocomplete: Given a parital name return all the possible locations with partial name as the prefix. The function should be case-insensitive.
+      *-> Auto complete:  * Autocomplete: Given a parital name return all the possibe locations with partial name as the prefix. The function should be case-insensitive.
 
       Using: 
       -> for (auto id : data) 
@@ -75,6 +75,17 @@ void TrojanMap::CreateGraphFromCSVFile()
 std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
 
 std::vector<std::string> TrojanMap::CalculateShortestPath_Bellman_Ford
+
+
+</pr>
+
+<b>Phase 3 submission:</b>
+
+
+    High-level overview of your design .
+<pr>
+<b>Phase 3</b>
+
 
 
 </pr>

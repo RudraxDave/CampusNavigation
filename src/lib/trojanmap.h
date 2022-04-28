@@ -29,7 +29,7 @@ class Node {
     std::unordered_set<std::string> attributes;  // List of the attributes of the location.
 };
 
-class TrojanMap {
+class TrojanMap{
  public:
   // Constructor
   TrojanMap(){CreateGraphFromCSVFile();};
@@ -83,12 +83,16 @@ class TrojanMap {
   std::vector<std::string> CalculateShortestPath_Bellman_Ford(std::string location1_name,
                                                  std::string location2_name);
 
+  void TravellingTrojan_helper(std::vector<std::string> &location_ids,std::vector<std::vector<double>> &weights,std::vector<std::vector<std::string>> &path,double &minDist,std::vector<int> &currentPath,double currDist,std::unordered_set<int> &seen, bool is_bruteforce);
+
+
   // Given CSV filename, it read and parse locations data from CSV file,
   // and return locations vector for topological sort problem.
   std::vector<std::string> ReadLocationsFromCSVFile(std::string locations_filename);
   
   // Given CSV filenames, it read and parse dependencise data from CSV file,
   // and return dependencies vector for topological sort problem.
+  //
   std::vector<std::vector<std::string>> ReadDependenciesFromCSVFile(std::string dependencies_filename);
 
   // Given a vector of location names, it should return a sorting of nodes
@@ -96,7 +100,9 @@ class TrojanMap {
   std::vector<std::string> DeliveringTrojan(std::vector<std::string> &location_names,
                                             std::vector<std::vector<std::string>> &dependencies);
 
-  void TrojanMap::DFSHelper(std::string &root, std::vector<std::string> &result, std::vector<std::vector<std::string>> &dependencies);
+  void TopologicalSort(std::string &location, std::unordered_map<std::string, std::vector<std::string>> &dependency_map, std::unordered_map<std::string, bool> &visited, std::vector<std::string> &result);                                        
+
+//   void DFSHelper(std::string &root, std::vector<std::string> &result, std::vector<std::vector<std::string>> &dependencies);
 
   // Given a vector of location ids, it should reorder them such that the path
   // that covers all these points has the minimum length.
@@ -116,7 +122,7 @@ class TrojanMap {
   // Check whether the id is in square or not
   bool inSquare(std::string id, std::vector<double> &square);
 
-  bool TrojanMap::hasCycle(std::string current_id,std::unordered_map<std::string, bool> &visited, std::string parent_id);
+  bool hasCycle(std::string current_id,std::unordered_map<std::string, bool> &visited, std::string parent_id);
 
   // Get the subgraph based on the input
   std::vector<std::string> GetSubgraph(std::vector<double> &square);
