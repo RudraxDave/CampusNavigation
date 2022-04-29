@@ -617,12 +617,22 @@ void TrojanMap::TopologicalSort(std::string &location,
   result.push_back(location); // Add the location to the result
 }
 
-bool TrojanMap::inSquare(std::string id, std::vector<double> &square) {
-  bool is_square = false;
-  if(data[id].lon>=square[0] && data[id].lon<=square[1] && data[id].lat<=square[2] && data[id].lat>=square[3]){
-    is_square = true;
-  }
-  return is_square;
+bool TrojanMap::inSquare(std::string id, std::vector<double> &square)
+{
+  double min_lat, max_lat, min_lon, max_lon;
+  min_lat = square[0];
+  max_lat = square[1];
+
+  min_lon = square[2];
+  max_lon = square[3];
+
+  double current_lat = data[id].lat;
+  double current_lon = data[id].lon;
+
+  if ((current_lon >= min_lat && current_lon <= max_lat) && (current_lat <= min_lon && current_lat >= max_lon))
+    return true;
+
+  return false;
 }
 
 /**
