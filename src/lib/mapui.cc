@@ -239,7 +239,7 @@ void MapUI::PrintMenu() {
 
     std::cout << "Calculating ..." << std::endl;
     start = std::chrono::high_resolution_clock::now();
-    results = map.TravellingTrojan_3opt(locations);
+    results = map.TravellingTrojan_2opt(locations);
     stop = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     CreateAnimation(results.second, "output0_3opt.avi");
@@ -952,13 +952,13 @@ void MapUI::DynamicPrintMenu() {
     menu = "Calculating ...";
     y=ui.ScrollLongText(menu,10,y);
     start = std::chrono::high_resolution_clock::now();
-    results = map.TravellingTrojan_3opt(locations);
+    results = map.TravellingTrojan_2opt(locations);
     stop = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    CreateAnimation(results.second, "output0_3opt.avi");
+    CreateAnimation(results.second, "output0_2opt2.avi");
     menu = "*************************Results******************************\n";
     y=ui.ScrollLongText(menu,10,y);
-    menu = "TravellingTrojan_3opt\n";
+    menu = "TravellingTrojan_2opt\n";
     y=ui.ScrollLongText(menu,10,y);
     if (results.second.size() != 0) {menu = "";
       for (auto x : results.second[results.second.size()-1]) {menu += "\"" + x + "\",";   }

@@ -332,7 +332,7 @@ TEST(TrojanMapTest, TSP4) {
   TrojanMap m;
   
   std::vector<std::string> input1{"8566227755","6276439468","6788498757","7197964033","6805221420","123656718","6807927346","7197964012"}; // Input location ids 
-  auto result1 = m.TravellingTrojan_3opt(input1);
+  auto result1 = m.TravellingTrojan_2opt(input1);
   std::cout << "My path length: "  << result1.first << "miles" << std::endl; // Print the result path lengths
   std::vector<std::string> gt1{"8566227755","6276439468","6788498757","6805221420","7197964033","7197964012","6807927346","123656718","8566227755"}; // Expected order
   std::cout << "GT path length: "  << m.CalculatePathLength(gt1) << "miles" << std::endl; // Print the gt path lengths

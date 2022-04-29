@@ -136,8 +136,8 @@ class TrojanMap{
 
   void CreateAnimation(std::vector<std::vector<std::string>> path_progress);
 
-  std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_3opt(
-      std::vector<std::string> &location_ids);
+  // std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_3opt(
+  //     std::vector<std::string> &location_ids);
 
 
   
