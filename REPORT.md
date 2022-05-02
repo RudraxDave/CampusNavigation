@@ -2,158 +2,21 @@
 
 ![Trojan Map](/Report_files/0001.jpg)
 
-
 <b>This project focuses on using data structures in C++ and implementing various graph algorithms to build a map application.</b>
-
-https://docs.google.com/presentation/d/1t7qml6PQMXKnuVG7zzQRfYxsKp-AA2mYpbaw0YApjbA/edit?usp=sharing
-
-<b>Phase 1 submission:</b>
-
-    High-level overview of your design (Use diagrams and pictures for your data structures).
-
-<pr>
-<b>Phase 1</b>
- We can See that we have implemented Functions of :
-      1. Implementation of Auto complete: 5 points. (Phase 1)
-      2. Implementation of GetPosition: 5 points. (Phase 1)
-      3. Implementation of EditDistance: 10 points. (Phase 1)
-
-      *-> Auto complete:  * Autocomplete: Given a parital name return all the possibe locations with partial name as the prefix. The function should be case-insensitive.
-
-    Assumed the names of nodes as the locations. As we typed the location's partial name, a list of possible locations with the full name will be returned. Here uppercase and lower case are treated as the same character by using std::tolower.
-
-    To check if the input name matches the name in the database. We need first to call std::substring to compare the two strings' size. The time complexity for this function is O(n) where n is the number of nodes.
-
-
-      Using: 
-      -> for (auto id : data) 
-            ids = id.second.name;
-            std::transform(ids.begin(), ids.end(), ids.begin(), ::tolower);
-            if (name == ids.substr(0, name.size())) {
-                  results.push_back(id.second.name);
-
-      *-> GET POSITION:  * GetPosition: Given a location name, return the position. If id does not exist, return (-1, -1).
-      USING GET- lONGITUDE AND GET lATITUDE:
-
-
-
-    Given a non-duplicate location name, return the latitude, longitude, and mark the map's locations. If the location does not exist, return (-1, -1).
-
-    To check if the input_name is on the map, we need to loop through all the map elements and use an if_loop to filter satisfied elements as the output. The time complexity of this function is O(n) where n is the number of nodes.
-
-    Helper functions GetLat and GetLon are used to extract values of latitude and longitude, respectively.
-
-
-      -> for (auto id : data) { //for each original name in database
-            if (name == id.second.name) { //check if the input name is in the database
-            results.first = GetLat(id.first);//Insert Latitude as first param
-            results.second = GetLon(id.first);//Insert Longitude as second param
-            break;
-
-      *-> Edit Distance: CalculateEditDistance: Calculate edit distance between two location names
-      -> USING: for(int i=1;i<=n;i++)
-                  {
-                  for(int j=0;j<=m;j++)
-                  {
-                        if(j==0)
-                        D[i%2][j] = i; 
-                  else if(a[j-1] == b[i-1]){
-                        D[i%2][j] = D[(i-1)%2][j-1];
-                  }
-                  else{
-                        D[i%2][j]=1 + std::min(D[(i-1)%2][j],std::min(D[i%2][j-1],D[(i-1)%2][j-1]));
-                        }
-                  }
-                  }
-                  return D[n%2][m];
-
-    Detailed description of each function and its time complexity.
-    Time spent for each function.
-    Discussion, conclusion, and lessons learned.
-</pr>
-
-<b>Phase 2 submission:</b>
-
-
-    High-level overview of your design .
-<pr>
-<b>Phase 2</b>
-
-std::vector<std::string> TrojanMap::DeliveringTrojan(std::vector<std::string> &locations,
-                                                     std::vector<std::vector<std::string>> &dependencies){
-
-
-bool TrojanMap::inSquare(std::string id, std::vector<double> &square)
-
-std::vector<std::string> TrojanMap::GetSubgraph(std::vector<double> &square)
-
-bool TrojanMap::hasCycle(std::string current_id,std::unordered_map<std::string, bool> &visited, std::string parent_id)
-
-bool TrojanMap::CycleDetection(std::vector<std::string> &subgraph, std::vector<double> &square)
-
-void TrojanMap::CreateGraphFromCSVFile()
-
-Given 2 locations A and B on the map, find the best route from A to B.
-
-
-std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
-
-std::vector<std::string> TrojanMap::CalculateShortestPath_Bellman_Ford
-
-
-</pr>
-
-<b>Phase 3 submission:</b>
-
-
-    High-level overview of your design .
-<pr>
-<b>Phase 3</b>
-
-  std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Brute_force(
-      std::vector<std::string> location_ids);
-  
-  std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Backtracking(
-      std::vector<std::string> location_ids);
-  
-  std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_2opt(
-      std::vector<std::string> location_ids);
-
-
-    2-opt may not always find the best result, and it needs a base case to implement greedy nearest neighbor algorithms.
-    2-opt is way faster than the brute force in terms of run time, especially if the input N is greater than 10.
-    The time complexity of this function is O(n*x), where x is the times of non_improvments defined by users.
-
-      I randomly selected N points in the map and run the program
-
-  std::vector<std::string> FindNearby std::stringstd::string, double, int);
-
-
-
-</pr>
-
-Conclusion
-
-In this project, I constructed a backend map application for users to navigate around the USC campus. I used some basic STL libraries such as queue, array, list, and iterator, etc. I implemented graph search algorithms, classical sorting algorithms, generated reasonable Google unit tests, and further demonstrated the traveling salesperson computation with animations.
-
-Video Demo
-
-## TrojanMap
-
-## Link to Video Presentation: 
-https://youtu.be/-G0MUh26K04
-## Link to Powerpoint Presentation (with output screenshots and analysis):
-https://docs.google.com/presentation/d/1t16SYcLkj1K3Tr0aivf_P7Nl5cnczn5R/edit?userstoinvite=maitreyee0123@gmail.com&actionButton=1#slide=id.p2
-
-This project focuses on using data structures in C++ and implementing various graph algorithms to build a map application.
 
 ## The Data Structure
 
 Each point on the map is represented by the class **Node** shown below and defined in [trojanmap.h](src/lib/trojanmap.h).
 
-## PHASE 1
 
-## Pre-requisites Installation
+## PHASE 1 submission:
+
+Device Specs: ASUS ROg STRIX: intel i5 9th Generation
+
+## Using Ubuntu on Oracle Virtual Box: 
+Oracle VM Box Version: 6.1.0
+
+## Installations
 
 The below packages and libraries were installed on the Ubuntu Operating System:
 - OpenCV
@@ -161,31 +24,42 @@ The below packages and libraries were installed on the Ubuntu Operating System:
 - libcanberra-gtk3-module
 - libncursesw5-dev
 
-## Functions 
+## Description of the project:
+![Description](/Report_files/0002.jpg)
+
+## Functions
+ We can See that we have implemented Functions of :
+
+      1. Implementation of Auto complete: 5 points. (Phase 1)
+
+      2. Implementation of GetPosition: 5 points. (Phase 1)
+
+      3. Implementation of EditDistance: 10 points. (Phase 1)
 
 ## 1. Autocomplete
 
 - Function:
+![Autocomplete](/Report_files/0006.jpg)
 
 std::vector<std::string> Autocomplete(std::string name);
 
 - Description:
-The node names were considered as the locations. A function was implemented to enter the partial name of the location and obtain a list of possible locations with partial name as prefix as the output. The input string was filtered for non-alphabet characters and was converted to lower case prior to performing a substring operation to compare the entered prefix string and obtain all the strings starting with the entered prefix.
+The node names were considered as the locations. Assumed the names of nodes as the locations. As we typed the location's partial name, a list of possible locations with the full name will be returned. Here uppercase and lower case are treated as the same character by using std::tolower.
+
+To check if the input name matches the name in the database. We need first to call std::substring to compare the two strings' size. The time complexity for this function is O(n) where n is the number of nodes.
 
 - Time Complexity:
 The time complexity of this function is O(n), where n is the total number of nodes with a name. The first time that the user executes this function, it will require O(n*) to initialize the hashmap, where n* is the total number of nodes in the map.
 
-- Runtime:
-On a Dell Inspiron 15 7000 series laptop with i7 processor, it takes 2 ms to search for "Us".
+-Ubuntu Virtual Box Runtime: 
+Ex: 'Sh' -> 21ms 
 
 ## 2. Find Position
 
 - Functions:
+![GetPosition](/Report_files/0007.jpg)
 
 std::pair<double, double> GetPosition(std::string name);
-
-    Traverse all nodes in the given data until we find the input name. If we find the name, record its latitude and longitude using GetLat() and GetLon(). Else we ouput (-1, -1).
-    Time Complexity: O(n), where n is the number of nodes in the give map.
 
 double GetLat(std::string id);
 
@@ -198,13 +72,23 @@ double GetLon(std::string id);
     Time Complexity: O(1).
 
 - Description:
-The user enters the full name of a location and the program returns the latitude and longitude as the output on the terminal, and also marks the given locations on the popup map window. There are no duplicated location names stored in the map. If the location does not exist, then the output is no result match on the terminal.
+Given a location name, returns the position. If id does not exist, return (-1, -1).USING GET-lONGITUDE AND GET lATITUDE:
+
+Given a non-duplicate location name, return the latitude, longitude, and mark the map's locations. If the location does not exist, return (-1, -1).
+
+To check if the input_name is on the map, we need to loop through all the map elements and use an if_loop till filter satisfied elements as the output. 
+
+Helper functions GetLat and GetLon are used to extract values of latitude and longitude, respectively.
 
 - Time Complexity:
-The time complexity of this function is O(n). The first time that the user executes this function, it will require O(n*) to initialize the hashmap, where n* is the total number of nodes in the map.
+The time complexity of this function is O(n) where n is the number of nodes.
 
-- Runtime:
-On a Dell Inspiron 15 7000 series laptop with i7 processor, it takes 1 ms to search for "USC Village Gym".
+-Ubuntu Virtual Box Runtime: 
+Ex: 'Rolphs' ->  Ralphs -> 15ms
+
+Edit Distance: CalculateEditDistance: Calculate edit distance between two location names
+
+![Edit Distance](/Report_files/0008.jpg)
 
 ## PHASE 2
 
@@ -218,11 +102,19 @@ std::vector<std::string> CalculateShortestPath_Dijkstra(std::string &location1_n
     Each time we add the nearest unvisited location into the set of visited locations. Update shortest distance of this location’s neighbors and its predecessor map. This continues until the location is the destination. It traverses the predecessor map and output is the shortest path. If we traverse neighbors that we can obtain and do not meet the destination, that means the start node cannot arrive at the destination. In this case, we return an empty path.
     Time Complexity: O(n^2), where n is the number of nodes in the given map.
 
+DJIKSTRA
+
+![Djikstra](/Report_files/0009.jpg)
+
 std::vector<std::string> CalculateShortestPath_Bellman_Ford(std::string &location1_name,
                                                std::string &location2_name);
 
     Each time update the shortest distance and the predecessor map by adding the intermediate edge by one. This contiinues until we traverse all nodes. If the destination has been updated, we traverse the predecessor map and output is the shortest path, else it means the start point cannot arrive at the destination and we return an empty path.
     Time Complexity: O(n + m), where n is the number of nodes, m is the number of edges in the given map.
+
+BELLMAN FORD
+
+![BellFord](/Report_files/0010.jpg)    
 
 std::vector<std::string> GetNeighborIDs(std::string id);
 
@@ -233,15 +125,110 @@ std::vector<std::string> GetNeighborIDs(std::string id);
 User types in two locations A and B, the program returns the best route from A to B on the terminal and shows the path on the popup map window. The distance between 2 points is the euclidean distance using latitude and longitude. User can choose to use Dijkstra algorithm or Bellman-Ford algorithm. If there is no path, it returns an empty vector.
 
 - Time Complexity:
-For Dijkstra: The function use minheap to implement Dijkstra algorithm. The time complexity of this function is O(n^2), n is the total number of nodes.
-For Bellman-Ford: The time complexity of this function is O(n + m), where m is the total number of edges in the map and n is the total number of nodes.
+For Dijkstra: Uses Greedy: and The Time Complexity will be O(V* Log(E)
+where V is Vertices and E are Edges.
+For Bellman-Ford: Uses Dynamic Programming: and The Time Complexity will be O(V*E) where V is Vertices and E are Edges.
 
-- Runtime:
-On a Dell Inspiron 15 7000 series laptop with i7 processor:
-Dijkstra takes 60 ms to search for the shortest path from Ralphs to Trader Joe's.
-Bellman-Ford takes 6232 ms to search for the shortest path from Ralphs to Trader Joe's.
+- Ubuntu Virtual Box Runtime:
+Ex: KFC to Ralphs
+Distance Measured: 0.95274 Miles
 
-## 4. Travelling Trojan (TSP)
+Djikstra: 156ms
+Bellman Ford: 18621ms
+
+Conclusion: Djikstra is Faster, and BellMan Ford takes atleast 80-100 Times Djikstra'S Time
+The runtime is higher for Bellman Ford than Dijkstra. Therefore, Dijkstra is a better choice for computing the shortest path in the Trojan Map application.
+
+Inferences: Google Maps: The output map path of the Shortest Path algorithms was compared with that of Google Maps for the same pair of locations and was found to be the same.
+
+## 4. Cycle Detection
+
+![Cycle Detection](/Report_files/0018.jpg) 
+
+- Functions:
+
+bool CycleDetection(std::vector<std::string> &subgraph, std::vector<double> &square);
+  // Given a subgraph specified by a square-shape area, determine whether there is a
+  // cycle or not in this subgraph.
+
+    We create a map named visited that has all nodes in the given area and another map named predecessor of the child node and its parent node. We traverse all nodes in the visited map and check if a cycle is formed or not. The result is returned as a boolean value, true or false.
+    Time Complexity: O(V+E), where V is the number of nodes in the map and E is the number of edges in the given area.
+
+  // Check whether the id is in square or not
+  bool inSquare(std::string id, std::vector<double> &square);
+
+  bool hasCycle(std::string current_id,std::unordered_map<std::string, bool> &visited, std::string parent_id);
+
+  // Get the subgraph based on the input
+  std::vector<std::string> GetSubgraph(std::vector<double> &square);
+
+    We mark the current node as true in the visited map. We traverse the curent node's neighbouring nodes and record the current node as predecessor node of the neighbouring nodes. If the neighbour is in the area and it has not been visited, we use recursion. If the neighbor is in the area and it has been visited and it is not the parent node, that means there exists a cycle, then we return true, Else we return false.
+    Time Complexity: O(n + m), where n is the number of nodes in the given area, m is the number of edges in the given area.
+
+- Description:
+The user types in four geographical parameters to form a square-shaped region in the map, then the program detects if there is a cycle in the given region or not and shows the result in the terminal.
+
+- Time Complexity:
+O(V+E), where V is the number of nodes in the map and E is the number of edges in the given area.
+
+- Ubuntu Virtual Box Runtime:
+Ex: left Bound Longitude: -118.299
+    right Bound Longitude: -118.264
+    upper Bound Latitude: 34.032
+    lower Bound Latitude: 34.011
+
+    Time Taken: 4ms
+
+std::vector<std::string> TrojanMap::DeliveringTrojan(std::vector<std::string> &locations,
+                                                     std::vector<std::vector<std::string>> &dependencies){
+
+void TrojanMap::CreateGraphFromCSVFile()
+
+Inference:
+- DFS: Depth First Search is the algorithm that was the basis for Cycle Detection.
+
+## 5. Topological Sort
+
+- Functions:
+
+  void TravellingTrojan_helper(std::vector<std::string> &location_ids,std::vector<std::vector<double>> &weights,std::vector<std::vector<std::string>> &path,double &minDist,std::vector<int> &currentPath,double currDist,std::unordered_set<int> &seen, bool is_bruteforce);
+
+  // Given CSV filename, it read and parse locations data from CSV file,
+  // and return locations vector for topological sort problem.
+  std::vector<std::string> ReadLocationsFromCSVFile(std::string locations_filename);
+  
+  // Given CSV filenames, it read and parse dependencise data from CSV file,
+  // and return dependencies vector for topological sort problem.
+  std::vector<std::vector<std::string>> ReadDependenciesFromCSVFile(std::string dependencies_filename);
+
+  // Given a vector of location names, it should return a sorting of nodes
+  // that satisfies the given dependencies.
+  std::vector<std::string> DeliveringTrojan(std::vector<std::string> &location_names,
+                                            std::vector<std::vector<std::string>> &dependencies);
+
+  void TopologicalSort(std::string &location, std::unordered_map<std::string, std::vector<std::string>> &dependency_map, std::unordered_map<std::string, bool> &visited, std::vector<std::string> &result);  
+
+TopoLogical Sort
+
+  ![TopoSort](/Report_files/0019.jpg)      
+
+    The input is a set of locations and corresponding dependencies and the output is a topological sorted path. This program can visualize the results on the map and is implemented using double-ended queue DFS. It will plot each location name and also some arrowed lines to demonstrate a feasible route.
+
+- Time Complexity:
+O(V+E), where V is the number of nodes in the map and E is the number of edges in the given area.
+
+- Ubuntu Virtual Box Runtime:
+Ex: Locations File 3 Values: Locations.csv
+    Dependencies File 3 Values in it: Dependencies.csv
+
+    Time Taken: 0ms
+
+Inference:
+- DFS: Depth First Search is the algorithm that was the basis for Topological Sort.
+
+## PHASE 3
+
+## 6. Travelling Trojan (TSP)
 
 - Functions:
 
@@ -252,62 +239,48 @@ void TrojanMap::TSP_helper(std::vector<std::vector<double>> &weights, std::vecto
     DFS algorithm to find the minimum cost given the start location.
     Time Complexity: O(n!), where n is the number of locations.
 
+![TSPRuntimes](/Report_files/0013.jpg)    
+
 std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Brute_force(std::vector<std::string> &location_ids);
 
     We create an adjacent matrix with rows and columns to be locations reindexed. We try all permutations of the path and find the minimum cost. For each time when we get a better path, we push back this path to our final result. It returns  the minimum cost and the result vector.
-    Time Complexity: O(n!), where n is the number of nodes in the input.
-    Runtime: 59 ms
+
+  - Time Complexity: O(n!), where n is the number of nodes in the input.
+
+  - Ubuntu Virtual Box Runtime:
+  Ex: Input = 8 locations
+
+    Time Taken: 38ms
 
 std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Backtracking(std::vector<std::string> location_ids);
 
     We create an adjacent matrix with rows and columns to be locations reindexed. We implement DFS to try all permutations of the path and find the minimum cost. For each time when we get a better path, we push back this path to our final result. It returns the minimum cost and the result vector.
-    Time Complexity: O(n!), where n is the number of nodes in the input.
-    Runtime: 20 ms
+
+  - Time Complexity: O(n!), where n is the number of nodes in the input.
+
+  - Ubuntu Virtual Box Runtime:
+  Ex: Input = 8 locations
+
+    Time Taken: 14ms
 
 std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_2opt(std::vector<std::string> &location_ids);
 
     We use two for loops to obtain a sub part in the location ids vector and reverse this sub part. If the updated vector's path length is smaller, we update things similar to Brute Force and go back to start again. This is repeated until no improvement is made.
-    Time Complexity: O(n^2), where n is the number of locations.
-    Runtime: 0 ms
 
-## 5. Cycle Detection
+  - Time Complexity: O(n^2), where n is the number of locations.
 
-- Functions:
+  - Ubuntu Virtual Box Runtime:
+  Ex: Input = 8 locations
 
-bool CycleDetection(std::vector<std::string> &subgraph, std::vector<double> &square);
+    Time Taken: 0ms
 
-    We create a map named visited that has all nodes in the given area and another map named predecessor of the child node and its parent node. We traverse all nodes in the visited map and check if a cycle is formed or not. The result is returned as a boolean value, true or false.
-    Time Complexity: O(n + m), where n is the number of nodes in the map and m is the number of edges in the given area.
+Conclusion: 2-opt is better for larger values, Backtracking isfastest for Smaller and Medium inputs.
+    2-opt may not always find the best result, and it needs a base case to implement greedy nearest neighbor algorithms.
+    2-opt is way faster than the brute force in terms of run time, especially if the input N is greater than 10.
+    The time complexity of this function is O(n*x), where x is the times of non_improvments defined by users.
 
-bool TrojanMap::CycleDetection_Helper(std::string current_id, std::unordered_map<std::string, bool> &visited, std::string parent_id, std::vector<double> &square, std::unordered_map<std::string, std::vector<std::string>> &predecessors, std::vector<std::string> &cycle_path);
+Inferences: TSP: The runtime is the least for 2-opt, higher than that for Backtracking and is the highest for Brute Force. Therefore, the 2-opt approach is the best suited algorithm for a large number of nodes.
 
-    We mark the current node as true in the visited map. We traverse the curent node's neighbouring nodes and record the current node as predecessor node of the neighbouring nodes. If the neighbour is in the area and it has not been visited, we use recursion. If the neighbor is in the area and it has been visited and it is not the parent node, that means there exists a cycle, then we return true, Else we return false.
-    Time Complexity: O(n + m), where n is the number of nodes in the given area, m is the number of edges in the given area.
-
-- Description:
-The user types in four geographical parameters to form a square-shaped region in the map, then the program detects if there is a cycle in the given region or not and shows the result in the terminal.
-
-- Time Complexity:
-The time complexity of this function is O(n + m), where m is the total number of edges in the given region and n is the total number of nodes in the map.
-
-- Runtime:
-On a Dell Inspiron 15 7000 series laptop with i7 processor, the function takes 0 ms to search for the region {-118.290919, -118.282911, 34.02235, 34.019675}.
-
-## 6. Topological Sort
-
-- Functions:
-
-void TrojanMap::TopologicalSort_helper(std::string &loc, std::unordered_map<std::string, std::vector<std::string>> &dependency, std::unordered_map<std::string, bool> &visited, std::vector<std::string> &res);
-
-std::vector<std::string> DeliveringTrojan(std::vector<std::string> &locations, std::vector<std::vector<std::string>> &dependencies);
-
-    The input is a set of locations and corresponding dependencies and the output is a topological sorted path. This program can visualize the results on the map and is implemented using double-ended queue DFS. It will plot each location name and also some arrowed lines to demonstrate a feasible route.
-
-- Time Complexity:
-The time complexity of this function is O(n + m), where m is the total number of edges in the given files and n is the total number of nodes in the given files.
-
-- Runtime:
-On a Dell Inspiron 15 7000 series laptop with i7 processor, the function takes 2 ms to search for the input files.
 
 ## 7. Find Nearby
 
@@ -317,50 +290,89 @@ std::vector<std::string> TrojanMap::FindNearby(std::string attributesName, std::
 
     Given an attribute name C, a location name L and a number r and k, we find at most k locations in attribute C on the map near L (not including L) within the range of r and return a vector of string ids. The order of locations is from the nearest to the farthest.
 
-- Time Complexity: 
-The time complexity of this function is O(n^2), where n is the total number of nodes given.
+FIND NEARBY
 
-- Runtime:
-On a Dell Inspiron 15 7000 series laptop with i7 processor, the function takes 5 ms.
+![Find Nearby](/Report_files/0020.jpg)     
+
+- Time Complexity: 
+The time complexity of this function is O(m * n)
+
+- Ubuntu Virtual Box Runtime:
+  Ex: Input Attribute: Library
+      Input Location: Leavey Library
+      Input Radius: 10
+      Input k: 5
+
+    Time Taken: 359ms
+
+## Map UI using NCurses - Extra Creds
+
+Creation of the Animated & dynamic User Interface
+
+- The First UI which Pops Up in the Terminal when the program is executed
+
+- This is the given MAP- Which we have to use for our functions and get required outputs.
+We have to select the Number from 1 – 8 for the execution of desired functions
+
+
+
+## Some Major Algorithms Implemented and Learnt
+
+Dijkstra algorithm
+Bellman-Ford algorithm
+Brute-force (i.e. generating all permutations, and returning the minimum)
+Brute-force enhanced with early backtracking
+2-opt Heuristic & 3-opt (Tried)
+Topological Sort
+DFS
 
 ## Runtime of all implemented functionalities
 
 Autocomplete:                   O(n)
 Finding the Position:           O(n)
+
 Calculate the Shortest Path: 
-Dijkstra:                       O(n^2)
-Bellman Ford:                   O(n*m)
+Dijkstra:                       O(V*log(E))
+Bellman Ford:                   O(V*E)
+Cycle Detection:                O(V+E)
+Topological Sort:               O(V+E)
+
 Travelling Trojan (TSP)
 Brute Force:                    O(n!)
 Backtracking:                   O(n!)
 2 - Opt:                        O(n^2)
-Cycle Detection:                O(n+m)
-Topological Sort:               O(n+m)
-Find Nearby:                    O(n^2)
-
-where, n: Number of nodes in the map, m: Number of edges in the map
-
-## Inferences
-
-- Shortest Path: The runtime is higher for Bellman Ford than Dijkstra. Therefore, Dijkstra is a better choice for computing the shortest path in the Trojan Map application.
-
-- Google Maps: The output map path of the Shortest Path algorithms was compared with that of Google Maps for the same pair of locations and was found to be the same.
-
-- TSP: The runtime is the least for 2-opt, higher than that for Backtracking and is the highest for Brute Force. Therefore, the 2-opt approach is the best suited algorithm for a large number of nodes.
-
-- DFS: Depth First Search is the algorithm that was the basis for many applications implemented in this project, including Travelling Salesperson, Cycle Detection and Topological Sort.
+x - opt:                        O(n^x)
+Find Nearby:                    O(m * n)
 
 
 ## Conclusion: 
 
-- Usage of different data structures can improve the efficiency of the program while also reducing the runtime.
+Conclusion
 
-- This project provided an opportunity to learn and practice many important data structures and graph algorithms in software programming, including DFS, Bellman Ford, Dijkstra and recursive algorithms.
+In this project, I constructed a backend map application for users to navigate around the USC campus. I used some basic STL libraries such as queue, array, list, and iterator, etc. I implemented graph search algorithms, classical sorting algorithms, generated reasonable Google unit tests, and further demonstrated the traveling salesperson computation with animations.
 
-- The project also enabled to learn the skill of designing algorithms and debugging the program codes using unit testing.
+- To improve the efficiency of the program we can try different Algorithms, Diff Data Structures and Libraries which will also reduce the runtime.
 
-- The future scope of this project:
-    - Implementing 3-opt approach for the Travelling Salesperson problem
-    - Broadening the scope of the map to cover a larger geographical area
-    - Improving the efficiency of the implemented algorithms
+- The Use of GITHUB and GIT to implement and present our code and work on vast number of problems while the same was a new and Learning Experience.
 
+- Trojan Map Project gave us an application based learning to learn and practice C++, and its many important data structures.
+
+- Graph algorithms in software programming, including DFS, Bellman Ford, Dijkstra and recursive algorithms, and various others are now imprinted correctly and usage based learning was obtained.
+
+
+## The future scope of this project:
+
+- 3- opt Implementation and using other optimization techniques.
+- To cover a larger geographical area ex: LA County- can be done to broaden the scope of the project and handle bigger dataset.
+- Improving the UI and Making it more User Friendly so it can be used as an Alternative for los Angeles, CA-90007 Residents.
+- Web Appplications, Or Further Applications to improve and make it for all.
+
+## Link to Video Presentation: 
+https://youtu.be/CioX3-m47sk
+
+[![TrojanMap RDX](https://img.youtube.com/vi/CioX3-m47sk/0.jpg)](https://www.youtube.com/watch?v=CioX3-m47sk)
+
+## Link to Powerpoint Presentation (with output screenshots and analysis):
+https://docs.google.com/presentation/d/1t7qml6PQMXKnuVG7zzQRfYxsKp-AA2mYpbaw0YApjbA/edit?usp=sharing
+
+![Thank You](/Report_files/0021.jpg)
