@@ -11,7 +11,7 @@ Each point on the map is represented by the class **Node** shown below and defin
 
 ## PHASE 1 submission:
 
-Device Specs: ASUS ROg STRIX: intel i5 9th Generation
+Device Specs: ASUS ROG STRIX: intel i5 9th Generation
 
 ## Using Ubuntu on Oracle Virtual Box: 
 Oracle VM Box Version: 6.1.0
