@@ -31,6 +31,7 @@ This is how the Trojan Map is Graphed:
 ![TrojanUI](/Report_files/5381.PNG)
 
 This is My Implemented page for The Map UI Using NCurses.
+
 ![TrojanMapUI](/Report_files/TrojanMapUI.PNG)
 
 
@@ -97,6 +98,7 @@ Edit Distance: CalculateEditDistance: Calculate edit distance between two locati
 
 ![Edit Distance](/Report_files/0008.jpg)
 Eg: UFC -> KFC
+
 ![Edit Distance](/Report_files/Nomatch.PNG)
 
 ## PHASE 2
@@ -251,10 +253,11 @@ Ex: Locations File 3 Values: Locations.csv
     Time Taken: 0ms
 If Topological Sort found:
 
-![Topo](/Report_files/wefsefseefwefasef.PNG.PNG)
+![Topo](/Report_files/wefsefseefwefasef.PNG)
 
 If Topological Sort not found:
-![NoTopo](/Report_files/nograph.PNG.PNG)
+
+![NoTopo](/Report_files/nograph.PNG)
 
 Inference:
 - DFS: Depth First Search is the algorithm that was the basis for Topological Sort.
