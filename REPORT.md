@@ -28,10 +28,10 @@ The below packages and libraries were installed on the Ubuntu Operating System:
 ![Description](/Report_files/0002.jpg)
 
 This is how the Trojan Map is Graphed:
-![TrojanUI](\Report_files\5381.PNG)
+![TrojanUI](/Report_files/5381.PNG)
 
 This is My Implemented page for The Map UI Using NCurses.
-![TrojanMapUI](\Report_files\TrojanMapUI.PNG)
+![TrojanMapUI](/Report_files/TrojanMapUI.PNG)
 
 
 ## Functions
@@ -251,10 +251,10 @@ Ex: Locations File 3 Values: Locations.csv
     Time Taken: 0ms
 If Topological Sort found:
 
-![Topo](\Report_files\wefsefseefwefasef.PNG.PNG)
+![Topo](/Report_files/wefsefseefwefasef.PNG.PNG)
 
 If Topological Sort not found:
-![NoTopo](\Report_files\nograph.PNG.PNG)
+![NoTopo](/Report_files/nograph.PNG.PNG)
 
 Inference:
 - DFS: Depth First Search is the algorithm that was the basis for Topological Sort.
@@ -301,8 +301,8 @@ std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Brute_
 
     Time Taken: 38ms
 
-Here is The Example of 6 as Input for TSP:
-![Brute Force](\Report_files\output0.gif)
+Here is The Example of 6 as Input for TSP Brute Force:
+![Brute Force](/Report_files/output0.gif)
 
 std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Backtracking(std::vector<std::string> location_ids);
 
@@ -316,7 +316,8 @@ std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Backtr
     Time Taken: 14ms
 
 Here is The Example of 6 as Input for TSP backtracking:
-![Brute Force Backtracking](\Report_files\output-backtracking.gif)
+
+![Brute FBacktracking](/Report_files/output0-backtracking.gif)
 
 
 std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_2opt(std::vector<std::string> &location_ids);
@@ -330,8 +331,8 @@ std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_2opt(s
 
     Time Taken: 0ms
 
-Here is The Example of 6 as Input for TSP:
-![2-opt](\Report_files\output0-2opt.gif)
+Here is The Example of 6 as Input for TSP 2-opt:
+![2-opt](/Report_files/output0-2opt.gif)
 
 Conclusion: 2-opt is better for larger values, Backtracking isfastest for Smaller and Medium inputs.
     2-opt may not always find the best result, and it needs a base case to implement greedy nearest neighbor algorithms.
@@ -368,6 +369,8 @@ Ex: Cafe
 
 ![Find Nearby Cafe](/Report_files/nearby.PNG) 
 ![Find Nearby op](/Report_files/nearby1.PNG) 
+![Find Nearby output](/Report_files/nearby3.PNG)
+
 
 ## Map UI using NCurses - Extra Creds
  Extra credit items: Maximum of 20 points:
@@ -375,39 +378,38 @@ Ex: Cafe
  
 Creation of the Animated & dynamic User Interface
 
+![MapUI](/Report_files/TrojanMapUI.PNG)
 - The First UI which Pops Up in the Terminal when the program is executed
 - This is the given MAP- Which we have to use for our functions and get required outputs.
-We have to select the Number from 1 – 8 for the execution of desired functions
-
-
+- We have to select the Number from 1 – 8 for the execution of desired functions
 
 ## Some Major Algorithms Implemented and Learnt
 
-Dijkstra algorithm
-Bellman-Ford algorithm
-Brute-force (i.e. generating all permutations, and returning the minimum)
-Brute-force enhanced with early backtracking
-2-opt Heuristic & 3-opt (Tried)
-Topological Sort
-DFS
+- Dijkstra algorithm
+- Bellman-Ford algorithm
+- Brute-force (i.e. generating all permutations, and returning the minimum)
+- Brute-force enhanced with early backtracking
+- 2-opt Heuristic & 3-opt (Tried)
+- Topological Sort
+- DFS
 
 ## Runtime of all implemented functionalities
 
-Autocomplete:                   O(n)
-Finding the Position:           O(n)
+- Autocomplete:                   O(n)
+- Finding the Position:           O(n)
 
 Calculate the Shortest Path: 
-Dijkstra:                       O(V*log(E))
-Bellman Ford:                   O(V*E)
-Cycle Detection:                O(V+E)
-Topological Sort:               O(V+E)
+- Dijkstra:                       O(V*log(E))
+- Bellman Ford:                   O(V*E)
+- Cycle Detection:                O(V+E)
+- Topological Sort:               O(V+E)
 
 Travelling Trojan (TSP)
-Brute Force:                    O(n!)
-Backtracking:                   O(n!)
-2 - Opt:                        O(n^2)
-x - opt:                        O(n^x)
-Find Nearby:                    O(m * n)
+- Brute Force:                    O(n!)
+- Backtracking:                   O(n!)
+- 2 - Opt:                        O(n^2)
+- x - opt:                        O(n^x)
+- Find Nearby:                    O(m * n)
 
 
 ## Conclusion: 
