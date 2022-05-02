@@ -92,6 +92,23 @@ Edit Distance: CalculateEditDistance: Calculate edit distance between two locati
 
 ## PHASE 2
 
+Implementation of shortest path: 15 points. (Phase 2)
+
+    Bellman-Ford implementation
+    Dijkstra implementation
+    Plot two paths, and measure and report time spent by two algorithms.
+
+Implement of Cycle detection: 10 points. (Phase 2)
+
+    Boolean value and draw the cycle if there exists one.
+
+Topological Sort: 10 points. (Phase 2)
+
+    Check whether there exist a topological sort or not
+    Return the correct order and plot those point on the map
+
+
+
 ## 3. Calculate Shortest Path Between Two Places
 
 - Functions:
@@ -227,6 +244,22 @@ Inference:
 - DFS: Depth First Search is the algorithm that was the basis for Topological Sort.
 
 ## PHASE 3
+ 
+ Implementation of Travelling Trojan: (Phase 3)
+
+    Brute-force: 5 points.
+    Brute-force enhanced with early backtracking: 5 points.
+    2-opt: 10 points.
+    Animated plot: 5 points.
+
+FindNearby points: 10 points. (Phase 3)
+
+    Return the correct ids and draw the points.
+
+Video presentation and report: 10 points. (Phase 3)
+Creating reasonable unit tests: 10 points.
+
+    Three different unit tests for each item.
 
 ## 6. Travelling Trojan (TSP)
 
@@ -306,11 +339,12 @@ The time complexity of this function is O(m * n)
     Time Taken: 359ms
 
 ## Map UI using NCurses - Extra Creds
-
+ Extra credit items: Maximum of 20 points:
+    Create dynamic and animated UI using ncurses: 10 points
+ 
 Creation of the Animated & dynamic User Interface
 
 - The First UI which Pops Up in the Terminal when the program is executed
-
 - This is the given MAP- Which we have to use for our functions and get required outputs.
 We have to select the Number from 1 – 8 for the execution of desired functions
 
@@ -363,6 +397,7 @@ In this project, I constructed a backend map application for users to navigate a
 ## The future scope of this project:
 
 - 3- opt Implementation and using other optimization techniques.
+- Genetic algorithm implementation for Travelling Trojan:
 - To cover a larger geographical area ex: LA County- can be done to broaden the scope of the project and handle bigger dataset.
 - Improving the UI and Making it more User Friendly so it can be used as an Alternative for los Angeles, CA-90007 Residents.
 - Web Appplications, Or Further Applications to improve and make it for all.
