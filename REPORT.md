@@ -27,6 +27,13 @@ The below packages and libraries were installed on the Ubuntu Operating System:
 ## Description of the project:
 ![Description](/Report_files/0002.jpg)
 
+This is how the Trojan Map is Graphed:
+![TrojanUI](\Report_files\5381.PNG)
+
+This is My Implemented page for The Map UI Using NCurses.
+![TrojanMapUI](\Report_files\TrojanMapUI.PNG)
+
+
 ## Functions
  We can See that we have implemented Functions of :
 
@@ -89,6 +96,8 @@ Ex: 'Rolphs' ->  Ralphs -> 15ms
 Edit Distance: CalculateEditDistance: Calculate edit distance between two location names
 
 ![Edit Distance](/Report_files/0008.jpg)
+Eg: UFC -> KFC
+![Edit Distance](/Report_files/Nomatch.PNG)
 
 ## PHASE 2
 
@@ -175,6 +184,7 @@ bool CycleDetection(std::vector<std::string> &subgraph, std::vector<double> &squ
   bool inSquare(std::string id, std::vector<double> &square);
 
   bool hasCycle(std::string current_id,std::unordered_map<std::string, bool> &visited, std::string parent_id);
+If no Cycle Found it will show:
 
   // Get the subgraph based on the input
   std::vector<std::string> GetSubgraph(std::vector<double> &square);
@@ -208,22 +218,22 @@ Inference:
 
 - Functions:
 
-  void TravellingTrojan_helper(std::vector<std::string> &location_ids,std::vector<std::vector<double>> &weights,std::vector<std::vector<std::string>> &path,double &minDist,std::vector<int> &currentPath,double currDist,std::unordered_set<int> &seen, bool is_bruteforce);
+void TravellingTrojan_helper(std::vector<std::string> &location_ids,std::vector<std::vector<double>> &weights,std::vector<std::vector<std::string>> &path,double &minDist,std::vector<int> &currentPath,double currDist,std::unordered_set<int> &seen, bool is_bruteforce);
 
-  // Given CSV filename, it read and parse locations data from CSV file,
-  // and return locations vector for topological sort problem.
-  std::vector<std::string> ReadLocationsFromCSVFile(std::string locations_filename);
-  
-  // Given CSV filenames, it read and parse dependencise data from CSV file,
-  // and return dependencies vector for topological sort problem.
-  std::vector<std::vector<std::string>> ReadDependenciesFromCSVFile(std::string dependencies_filename);
+// Given CSV filename, it read and parse locations data from CSV file,
+// and return locations vector for topological sort problem.
+std::vector<std::string> ReadLocationsFromCSVFile(std::string locations_filename);
 
-  // Given a vector of location names, it should return a sorting of nodes
-  // that satisfies the given dependencies.
-  std::vector<std::string> DeliveringTrojan(std::vector<std::string> &location_names,
-                                            std::vector<std::vector<std::string>> &dependencies);
+// Given CSV filenames, it read and parse dependencise data from CSV file,
+// and return dependencies vector for topological sort problem.
+std::vector<std::vector<std::string>> ReadDependenciesFromCSVFile(std::string dependencies_filename);
 
-  void TopologicalSort(std::string &location, std::unordered_map<std::string, std::vector<std::string>> &dependency_map, std::unordered_map<std::string, bool> &visited, std::vector<std::string> &result);  
+// Given a vector of location names, it should return a sorting of nodes
+// that satisfies the given dependencies.
+std::vector<std::string> DeliveringTrojan(std::vector<std::string> &location_names,
+                                        std::vector<std::vector<std::string>> &dependencies);
+
+void TopologicalSort(std::string &location, std::unordered_map<std::string, std::vector<std::string>> &dependency_map, std::unordered_map<std::string, bool> &visited, std::vector<std::string> &result);  
 
 TopoLogical Sort
 
@@ -239,6 +249,12 @@ Ex: Locations File 3 Values: Locations.csv
     Dependencies File 3 Values in it: Dependencies.csv
 
     Time Taken: 0ms
+If Topological Sort found:
+
+![Topo](\Report_files\wefsefseefwefasef.PNG.PNG)
+
+If Topological Sort not found:
+![NoTopo](\Report_files\nograph.PNG.PNG)
 
 Inference:
 - DFS: Depth First Search is the algorithm that was the basis for Topological Sort.
@@ -285,6 +301,9 @@ std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Brute_
 
     Time Taken: 38ms
 
+Here is The Example of 6 as Input for TSP:
+![Brute Force](\Report_files\output0.gif)
+
 std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Backtracking(std::vector<std::string> location_ids);
 
     We create an adjacent matrix with rows and columns to be locations reindexed. We implement DFS to try all permutations of the path and find the minimum cost. For each time when we get a better path, we push back this path to our final result. It returns the minimum cost and the result vector.
@@ -296,6 +315,10 @@ std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_Backtr
 
     Time Taken: 14ms
 
+Here is The Example of 6 as Input for TSP backtracking:
+![Brute Force Backtracking](\Report_files\output-backtracking.gif)
+
+
 std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_2opt(std::vector<std::string> &location_ids);
 
     We use two for loops to obtain a sub part in the location ids vector and reverse this sub part. If the updated vector's path length is smaller, we update things similar to Brute Force and go back to start again. This is repeated until no improvement is made.
@@ -306,6 +329,9 @@ std::pair<double, std::vector<std::vector<std::string>>> TravellingTrojan_2opt(s
   Ex: Input = 8 locations
 
     Time Taken: 0ms
+
+Here is The Example of 6 as Input for TSP:
+![2-opt](\Report_files\output0-2opt.gif)
 
 Conclusion: 2-opt is better for larger values, Backtracking isfastest for Smaller and Medium inputs.
     2-opt may not always find the best result, and it needs a base case to implement greedy nearest neighbor algorithms.
@@ -337,6 +363,11 @@ The time complexity of this function is O(m * n)
       Input k: 5
 
     Time Taken: 359ms
+
+Ex: Cafe
+
+![Find Nearby Cafe](/Report_files/nearby.PNG) 
+![Find Nearby op](/Report_files/nearby1.PNG) 
 
 ## Map UI using NCurses - Extra Creds
  Extra credit items: Maximum of 20 points:
